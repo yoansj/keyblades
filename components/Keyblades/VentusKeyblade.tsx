@@ -20,13 +20,20 @@ export default function VentusKeyblade(props: any) {
     "/models/ventus_keyblade/ventus_keyblade_wayward_wind.glb"
   ) as unknown as GLTFResult;
 
-  const [ref] = useBox(
+  const [ref, api] = useBox(
     () => ({ mass: 1, position: [1, 10, 0], args: [1.4, 0.45, 0.1], ...props }),
     useRef<Group>(null)
   );
 
+  const onSelect = () => {
+    api.sleep();
+    api.mass.set(0);
+    api.position.set(0, 0, 0);
+    api.rotation.set(5, 0, 0);
+  };
+
   return (
-    <group {...props} ref={ref} dispose={null}>
+    <group onClick={onSelect} {...props} ref={ref} dispose={null}>
       <group
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -0.3, 0]}
