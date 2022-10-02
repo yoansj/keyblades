@@ -10,7 +10,7 @@ export default function Plane() {
   return (
     <mesh ref={ref}>
       <planeBufferGeometry args={[100, 100]} />
-      <meshStandardMaterial color="lightblue" />
+      <meshStandardMaterial color="#555555" metalness={0} roughness={0} />
     </mesh>
   );
 }
